@@ -180,6 +180,6 @@ input[type="checkbox"]{
     background-color: red;
 }
 
-.z{
-    background-color: palegreen !important;
+h5.list-name{
+    color: rgb(38, 180, 92);
 }
