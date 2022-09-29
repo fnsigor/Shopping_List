@@ -1,0 +1,185 @@
+/*============= GERAL ==============*/
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style: none;
+    text-decoration: none;
+}
+
+:root{
+    font-size: 62.5%;
+
+    --body-bg-color: #fff;
+    --title-color: #000;
+    --sub-title-color: #000;
+    --text-color: #000;
+}
+
+body{
+    background-color: var(--body-bg-color);
+}
+
+.pop-up-container{
+    display: none;
+
+    width: 100vw;
+    height: 100vh;
+
+    position: absolute;
+
+    overflow: hidden;
+
+    background-color: rgba(0, 0, 0, 0.384);
+}
+
+.pop-up{
+    background-color: aqua;
+
+    width: 30rem;
+    padding: 1rem 1rem;
+
+    border-radius: .5rem;
+
+    margin: 50vh auto;
+    transform: translateY(-50%);
+}
+
+.pop-up *{
+    display: block;
+
+    margin: 0 auto;
+}
+
+.pop-up span{
+    margin-bottom: 1rem;
+
+    font-size: 2rem;
+    text-align: center;
+}
+.pop-up input{
+    font-size: 2rem;
+
+    padding: .4rem;
+    margin-bottom: 1.5rem;
+}
+.pop-up button{
+    font-size: 1.6rem;
+
+    padding: .4rem 1rem;
+}
+
+
+/*============= NAV ==============*/
+nav{
+    display: flex;
+    justify-content: space-between;
+
+    padding: 1rem 1.2rem;
+    margin-bottom: 6rem;
+}
+
+#logoText{
+    font-size: 3rem;
+}
+
+nav ul{
+    display: flex;
+    align-items: center;
+    gap: 4rem;
+}
+
+nav a{
+    font-size: 1.8rem;
+}
+
+
+
+
+/*============= HEADER ==============*/
+header{
+    margin-bottom: 4rem;
+}
+
+h1{
+    font-size: 5.5rem;
+    padding-left: 1rem;
+}
+
+header p{
+    font-size: 2rem;
+    padding-left: 3rem;
+}
+
+
+
+
+
+
+/*============= MAIN - INPUT CONTAINER ==============*/
+
+.input-container{
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    margin-bottom: 2rem;
+}
+
+.input-container input{
+    font-size: 1.6rem;
+    padding: .4rem;
+}
+
+.input-container button{
+    border-radius: 0;
+    border: none;
+    padding: .4rem .6rem;
+}
+
+
+
+
+
+/*============= MAIN - LIST CONTAINER ==============*/
+
+.div-list{
+    border: 1px solid red;
+    max-width: 90rem;
+    margin-inline: auto;
+}
+
+
+h5{
+    text-align: center;
+    font-size: 2.6rem;
+}
+
+.div-list li{
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.span-item{
+    font-size: 2rem;
+    width: 40%;
+}
+
+.span-valor, .span-quantidade{
+    width: 10%;
+    font-size: 2rem;
+}
+
+input[type="checkbox"]{
+    display: block;
+}
+
+.delete-button{
+    background-color: red;
+}
+
+.z{
+    background-color: palegreen !important;
+}

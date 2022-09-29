@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/index.css" type="text/css">
+    <title>Criar nova lista / index</title>
+</head>
+
+<body>
+
+    <div class="pop-up-container list-name">
+        <div class="pop-up">
+            <span for="">Dê um nome a sua lista</span>
+            <input type="text" minlength="2">
+            <button>Ok</button>
+        </div>
+    </div>
+
+    <nav>
+        <h4><a href="#" id="logoText">logoAplicacao</a></h4>
+
+        <ul>
+            <li><a href="#">Criar lista</a></li>
+            <li><a href="#">Gerenciar listas criadas</a></li>
+        </ul>
+    </nav>
+
+    <header>
+        <h1>Crie listas</h1>
+        <p>Aqui, você pode criar uma nova lista!</p>
+    </header>
+
+    <main>
+
+        <div class="input-container">
+            <input type="text" id="input-novo-item" minlength="2">
+            <button id="bt-create-item">set new item</button>
+        </div>
+
+        <div class="div-list">
+            <h5>Nova lista</h5>
+
+            <ul>
+                <li>
+                    <input type="checkbox" class="list-checkbox" style="visibility: hidden;">
+                    <span class="span-item">nome do item</span>
+                    <span class="span-valor">valor</span>
+                    <span class="span-quantidade">quantidade</span>
+                    <button class="delete-button" style="visibility: hidden;">Excluir</button>
+                </li>
+            </ul>
+        </div>
+
+    </main>
+
+    <script src="javascript/index.js"></script>
+</body>
+
+</html>
