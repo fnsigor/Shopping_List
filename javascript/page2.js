@@ -1,19 +1,18 @@
 //=================APP
 let lastCheckedItem
-let valorListaSelecionada 
+let valorListaSelecionada
 let nomeListaSelecionada
-const listasCriadas = localStorage.listasCriadas.split(',')
-
+let blocoParaExcluir
+let listasCriadas = []
 
 document.querySelector('.pop-up-container.checked button').addEventListener('click', setPurchaseData)
 
 
-
-
-listasCriadas.forEach(lista => {
+localStorage.listasCriadas.split(',').forEach(lista => {
 
     if (lista !== '') {
-        
+        listasCriadas.push(lista)
+
         const div = document.createElement('div')
         div.classList.add('blocos')
         div.textContent = lista
@@ -22,6 +21,11 @@ listasCriadas.forEach(lista => {
         document.querySelector('#listas-abertas').appendChild(div)
     }
 });
+
+
+
+
+
 
 
 
@@ -44,36 +48,42 @@ function showList(event) {
     valorListaSelecionada = div.firstElementChild.firstElementChild.lastElementChild
     nomeListaSelecionada = div.firstElementChild.firstElementChild.firstElementChild.textContent
 
+    //adiciona evento ao botao de excluir lista
+    document.getElementById('bt-delete-list').addEventListener('click', deleteList)
+    
+    //para usar na funcao de excluir lista
+    blocoParaExcluir = event.target
+
 }
 
 
-
-function check(event){
+//verifica se o checkbox está marcado ou não
+function check(event) {
 
     lastCheckedItem = event.target.parentElement //li
 
-    if(event.target.getAttribute('checked') === null){
+    if (event.target.getAttribute('checked') === null) {
         document.querySelector('.pop-up-container.checked').style.display = 'initial'
         event.target.setAttribute('checked', '')
 
-    } else{
+    } else {
         deletePurchaseData(event.target)
     }
 }
 
 
-function setPurchaseData(){
+function setPurchaseData() {
 
     //pega os valores como number
     const valor = Number(document.querySelector('.pop-up-container.checked input[type="text"]').value.replace(',', '.'))
-    const quantidade = Number(document.querySelector('.pop-up-container.checked input[type="number"]').value)    
+    const quantidade = Number(document.querySelector('.pop-up-container.checked input[type="number"]').value)
 
     //coloca os valores na li
     lastCheckedItem.firstElementChild.nextElementSibling.nextElementSibling.textContent = valor
     lastCheckedItem.lastElementChild.previousElementSibling.textContent = quantidade
 
     //faz o calculo e coloca o valor novo no html
-    valorListaSelecionada.textContent = String(valor * quantidade + Number(valorListaSelecionada.textContent.replace(',', '.'))).replace('.',',')
+    valorListaSelecionada.textContent = String(valor * quantidade + Number(valorListaSelecionada.textContent.replace(',', '.'))).replace('.', ',')
 
     //some com o pop up de alteração de preço
     document.querySelector('.pop-up-container.checked').style.display = 'none'
@@ -83,39 +93,45 @@ function setPurchaseData(){
 }
 
 
+function subtractListValue() {
 
-function deletePurchaseData(checkbox){
+    const valor = Number(lastCheckedItem.firstElementChild.nextElementSibling.nextElementSibling.textContent.replace(',', '.'))
+    const quantidade = Number(lastCheckedItem.lastElementChild.previousElementSibling.textContent)
+
+    valorListaSelecionada.textContent = String(Number(valorListaSelecionada.textContent.replace(',', '.')) - valor * quantidade).replace(',', '.')
+
+    lastCheckedItem.firstElementChild.nextElementSibling.nextElementSibling.textContent = ''
+    lastCheckedItem.lastElementChild.previousElementSibling.textContent = ''
+
+    localStorage.setItem(nomeListaSelecionada, document.querySelector('.div-list').innerHTML)
+}
+
+
+function deletePurchaseData(checkbox) {
+
     checkbox.removeAttribute('checked')
-
-    const valor = Number(lastCheckedItem.firstElementChild.nextElementSibling.nextElementSibling.textContent.replace(',', '.'))
-    const quantidade  = Number(lastCheckedItem.lastElementChild.previousElementSibling.textContent)
-
-    valorListaSelecionada.textContent = String(Number(valorListaSelecionada.textContent.replace(',', '.')) - valor * quantidade).replace(',', '.')
-
-    lastCheckedItem.firstElementChild.nextElementSibling.nextElementSibling.textContent = ''
-    lastCheckedItem.lastElementChild.previousElementSibling.textContent = ''
-
-    localStorage.setItem(nomeListaSelecionada, document.querySelector('.div-list').innerHTML)
+    subtractListValue()
 }
 
-function deleteItem(){
 
-
-    
-}
-
-function deleteItem(event){
+function deleteItem(event) {
     event.target.parentElement.style.display = 'none'
-
-    const valor = Number(lastCheckedItem.firstElementChild.nextElementSibling.nextElementSibling.textContent.replace(',', '.'))
-    const quantidade  = Number(lastCheckedItem.lastElementChild.previousElementSibling.textContent)
-
-    valorListaSelecionada.textContent = String(Number(valorListaSelecionada.textContent.replace(',', '.')) - valor * quantidade).replace(',', '.')
-
-    lastCheckedItem.firstElementChild.nextElementSibling.nextElementSibling.textContent = ''
-    lastCheckedItem.lastElementChild.previousElementSibling.textContent = ''
-
-    localStorage.setItem(nomeListaSelecionada, document.querySelector('.div-list').innerHTML)
+    subtractListValue()
 }
+
+function deleteList(event) {
+
+    //sumir o pop up
+    document.querySelector('.pop-up-container.lista').style.display = 'none'
+    blocoParaExcluir.style.display = 'none'
+
+    //remove o nome da lista do array de listas
+    listasCriadas.splice(listasCriadas.indexOf(nomeListaSelecionada), 1)
+    localStorage.setItem('listasCriadas', listasCriadas +",")
+
+    //remove a lista do local storage
+    localStorage.removeItem(nomeListaSelecionada)
+}
+
 
 

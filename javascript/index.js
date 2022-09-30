@@ -28,6 +28,7 @@ let listName
 document.getElementById('bt-create-item').addEventListener('click', createListItem)
 document.querySelector('.pop-up-container.list-name button').addEventListener('click', setListName)
 document.getElementById('bt-save-list').addEventListener('click', saveList)
+document.getElementById('bt-delete-list').addEventListener('click', deleteList)
 
 
 
@@ -71,8 +72,6 @@ function deleteItem(event){
 }
 
 
-
-
 function saveList(){
 
 
@@ -94,4 +93,7 @@ function saveList(){
     window.location.href = "http://127.0.0.1:5501/Fundamentar/99-Desafios/lista-de-compras/page2.html"
 }
 
+function deleteList(){
+    window.location.reload()
+}
 
