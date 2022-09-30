@@ -3,15 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- CSS only -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
-    <!-- JavaScript Bundle with Popper -->
-    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
-    <title>Pagina 2</title>
+    <link rel="stylesheet" href="css/page2.css">
+    <title>Gerenciar listas</title>
 </head>
 <body>
-    <button onclick="x()">add item pela page 2</button>
-    <a href="index.html">voltar</a>
+
+    <div class="pop-up-container checked">
+        <div class="pop-up">
+            <span for="">Insira os dados da compra</span>
+            <label for="">Valor do item
+                <input type="text">
+            </label>
+            <label for=""> Quantidade comprada
+                <input type="number">
+            </label>
+            <button>Ok</button>
+        </div>
+    </div>
+
+    <div class="pop-up-container lista">
+    </div>
+
+    <nav>
+        <h4><a href="#" id="logoText">L-Manager</a></h4>
+
+        <ul>
+            <li><a href="index.html">Criar lista</a></li>
+            <li><a href="page2.html">Gerenciar listas criadas</a></li>
+        </ul>
+    </nav>
+
+    <header>
+        <h1>Listas criadas</h1>
+        <p>Aqui, você pode gerenciar as listas que você criou, podendo adicionar e remover itens, marcar sua compras e excluir as listas</p>
+    </header>
+
+    <main>
+
+        <section id="listas-abertas"></section>
+
+
+    </main>
+
+
+
+
+
     <script src="javascript/page2.js"></script>
 </body>
 </html>

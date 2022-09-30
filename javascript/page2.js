@@ -1,11 +1,121 @@
+//=================APP
+let lastCheckedItem
+let valorListaSelecionada 
+let nomeListaSelecionada
 const listasCriadas = localStorage.listasCriadas.split(',')
-listasCriadas.pop()
+
+
+document.querySelector('.pop-up-container.checked button').addEventListener('click', setPurchaseData)
+
+
+
 
 listasCriadas.forEach(lista => {
+
+    if (lista !== '') {
+        
+        const div = document.createElement('div')
+        div.classList.add('blocos')
+        div.textContent = lista
+        div.addEventListener('click', showList)
+
+        document.querySelector('#listas-abertas').appendChild(div)
+    }
+});
+
+
+
+//cria a lista a partir dos dados do localStorage e exibe elas
+function showList(event) {
+    const nomeLista = event.target.textContent
+    const listaLocal = localStorage.getItem(nomeLista)
+
     const div = document.createElement('div')
     div.classList.add('div-list')
+    div.innerHTML = listaLocal
 
-    div.innerHTML = localStorage.getItem(lista)
+    document.querySelector('.pop-up-container.lista').append(div)
 
-    document.querySelector('body').appendChild(div)
-});
+    document.querySelector('.pop-up-container.lista').style.display = 'block'
+
+    //mostra os elementos escondidos que estao na lista
+    document.querySelectorAll('.hide').forEach(element => element.classList.remove('hide'))
+
+    valorListaSelecionada = div.firstElementChild.firstElementChild.lastElementChild
+    nomeListaSelecionada = div.firstElementChild.firstElementChild.firstElementChild.textContent
+
+}
+
+
+
+function check(event){
+
+    lastCheckedItem = event.target.parentElement //li
+
+    if(event.target.getAttribute('checked') === null){
+        document.querySelector('.pop-up-container.checked').style.display = 'initial'
+        event.target.setAttribute('checked', '')
+
+    } else{
+        deletePurchaseData(event.target)
+    }
+}
+
+
+function setPurchaseData(){
+
+    //pega os valores como number
+    const valor = Number(document.querySelector('.pop-up-container.checked input[type="text"]').value.replace(',', '.'))
+    const quantidade = Number(document.querySelector('.pop-up-container.checked input[type="number"]').value)    
+
+    //coloca os valores na li
+    lastCheckedItem.firstElementChild.nextElementSibling.nextElementSibling.textContent = valor
+    lastCheckedItem.lastElementChild.previousElementSibling.textContent = quantidade
+
+    //faz o calculo e coloca o valor novo no html
+    valorListaSelecionada.textContent = String(valor * quantidade + Number(valorListaSelecionada.textContent.replace(',', '.'))).replace('.',',')
+
+    //some com o pop up de alteração de preço
+    document.querySelector('.pop-up-container.checked').style.display = 'none'
+
+    //coloca essa alteração no localStrorage
+    localStorage.setItem(nomeListaSelecionada, document.querySelector('.div-list').innerHTML)
+}
+
+
+
+function deletePurchaseData(checkbox){
+    checkbox.removeAttribute('checked')
+
+    const valor = Number(lastCheckedItem.firstElementChild.nextElementSibling.nextElementSibling.textContent.replace(',', '.'))
+    const quantidade  = Number(lastCheckedItem.lastElementChild.previousElementSibling.textContent)
+
+    valorListaSelecionada.textContent = String(Number(valorListaSelecionada.textContent.replace(',', '.')) - valor * quantidade).replace(',', '.')
+
+    lastCheckedItem.firstElementChild.nextElementSibling.nextElementSibling.textContent = ''
+    lastCheckedItem.lastElementChild.previousElementSibling.textContent = ''
+
+    localStorage.setItem(nomeListaSelecionada, document.querySelector('.div-list').innerHTML)
+}
+
+function deleteItem(){
+
+
+    
+}
+
+function deleteItem(event){
+    event.target.parentElement.style.display = 'none'
+
+    const valor = Number(lastCheckedItem.firstElementChild.nextElementSibling.nextElementSibling.textContent.replace(',', '.'))
+    const quantidade  = Number(lastCheckedItem.lastElementChild.previousElementSibling.textContent)
+
+    valorListaSelecionada.textContent = String(Number(valorListaSelecionada.textContent.replace(',', '.')) - valor * quantidade).replace(',', '.')
+
+    lastCheckedItem.firstElementChild.nextElementSibling.nextElementSibling.textContent = ''
+    lastCheckedItem.lastElementChild.previousElementSibling.textContent = ''
+
+    localStorage.setItem(nomeListaSelecionada, document.querySelector('.div-list').innerHTML)
+}
+
+

@@ -8,6 +8,8 @@
  * 
  * cada lista terá seu proprio espaco em local storage
  * salvaremos o nome das listas em uma array, para na outra pagina, iterar essa array e pegar cada lista pelo seu nome
+ * 
+ * a principio funcao de realizar calculo somente na aba de gerenciar listas
  */
 
 
@@ -25,7 +27,6 @@ let listName
 //adicionar eventos
 document.getElementById('bt-create-item').addEventListener('click', createListItem)
 document.querySelector('.pop-up-container.list-name button').addEventListener('click', setListName)
-document.querySelector('.pop-up-container.checked button').addEventListener('click', setPurchaseData)
 document.getElementById('bt-save-list').addEventListener('click', saveList)
 
 
@@ -36,11 +37,11 @@ function createListItem(){
     
     const novoItem = 
         `<li>
-        <input type="checkbox" class="list-checkbox" onclick="showPurchaseDataPopUp(event)">
+        <input type="checkbox" class="list-checkbox hide" onclick="check(event)">
         <span class="span-item">${nomeItem}</span>
         <span class="span-valor"></span>
         <span class="span-quantidade"></span>
-        <button class="delete-button" onclick="deleteItem(event)">Excluir</button>
+        <button class="delete-item" onclick="deleteItem(event)">Excluir</button>
         </li>`
 
     lista.innerHTML += novoItem
@@ -59,7 +60,7 @@ function showListNamePopUp(){
 function setListName(){
     listName = document.querySelector('.pop-up-container.list-name input').value
 
-    lista.previousElementSibling.textContent = document.querySelector('.pop-up-container.list-name input').value
+    document.querySelector('.texts h5').textContent = document.querySelector('.pop-up-container.list-name input').value
     document.querySelector('.pop-up-container.list-name').style.display = 'none'
 
     totalItemLista++
@@ -70,21 +71,6 @@ function deleteItem(event){
 }
 
 
-function showPurchaseDataPopUp(event){
-    document.querySelector('.pop-up-container.checked').style.display = 'initial'
-    lastCheckedItem = event.target.parentElement
-}
-
-
-function setPurchaseData(){
-    const valor = document.querySelector('.pop-up-container.checked input[type="text"]').value
-    const quantidade = document.querySelector('.pop-up-container.checked input[type="number"]').value    
-
-    lastCheckedItem.firstElementChild.nextElementSibling.nextElementSibling.textContent = valor
-    lastCheckedItem.lastElementChild.previousElementSibling.textContent = quantidade
-
-    document.querySelector('.pop-up-container.checked').style.display = 'none'
-}
 
 
 function saveList(){
@@ -107,3 +93,5 @@ function saveList(){
 
     window.location.href = "http://127.0.0.1:5501/Fundamentar/99-Desafios/lista-de-compras/page2.html"
 }
+
+

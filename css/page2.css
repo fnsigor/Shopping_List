@@ -40,6 +40,11 @@ body {
     background-color: rgba(0, 0, 0, 0.384);
 }
 
+.pop-up-container.checked{
+    z-index: 1;
+}
+
+
 .pop-up {
     background-color: var(--nav-bg-color);
 
@@ -52,6 +57,10 @@ body {
     transform: translateY(-50%);
 
     box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
+}
+
+.pop-up.checked{
+    z-index: 2;
 }
 
 .pop-up * {
@@ -102,6 +111,29 @@ body {
     cursor: pointer;
 
     background-color: var(--green1);
+}
+
+.blocos{
+    font-size: 2rem;
+    font-weight: 500;
+
+    border-radius: .5rem;
+
+    background-color: var(--nav-bg-color);
+
+    width: max-content;
+    padding: 1rem;
+
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+
+    transition: .3s;
+}
+
+.blocos:hover{
+    cursor: pointer;
+
+    background-color: #4bb684;
+
 }
 
 
@@ -181,8 +213,6 @@ header p {
 
 }
 
-.input-container input:focus {}
-
 .input-container button {
     border-radius: .5rem;
     border: none;
@@ -196,11 +226,24 @@ header p {
     width: fit-content;
 }
 
+
 .input-container button:hover {
     cursor: pointer;
     background-color: var(--green1);
 }
 
+
+
+
+/*============= MAIN - SECTION ABERTAS ==============*/
+#listas-abertas{
+    padding-inline: 2rem;
+    display: flex;
+    gap: 3rem;
+
+
+    flex-wrap: wrap;
+}
 
 
 
@@ -217,6 +260,9 @@ header p {
 
     padding-inline: 1rem;
     padding-bottom: .4rem;
+
+    margin-top: 50vh;
+    transform: translateY(-50%);
 }
 
 .div-header {
