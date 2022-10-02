@@ -40,8 +40,8 @@ body {
     background-color: rgba(0, 0, 0, 0.384);
 }
 
-.pop-up-container.checked{
-    z-index: 1;
+.pop-up-container.checked, .pop-up-container.item{
+    z-index: 2;
 }
 
 
@@ -57,10 +57,6 @@ body {
     transform: translateY(-50%);
 
     box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
-}
-
-.pop-up.checked{
-    z-index: 2;
 }
 
 .pop-up * {

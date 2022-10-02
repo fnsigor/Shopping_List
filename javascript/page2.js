@@ -4,8 +4,12 @@ let valorListaSelecionada
 let nomeListaSelecionada
 let blocoParaExcluir
 let listasCriadas = []
+let listaSelecionada
 
 document.querySelector('.pop-up-container.checked button').addEventListener('click', setPurchaseData)
+document.querySelector('.pop-up-container.item button').addEventListener('click', setNewItem)
+
+
 
 
 localStorage.listasCriadas.split(',').forEach(lista => {
@@ -21,11 +25,6 @@ localStorage.listasCriadas.split(',').forEach(lista => {
         document.querySelector('#listas-abertas').appendChild(div)
     }
 });
-
-
-
-
-
 
 
 
@@ -47,13 +46,17 @@ function showList(event) {
 
     valorListaSelecionada = div.firstElementChild.firstElementChild.lastElementChild
     nomeListaSelecionada = div.firstElementChild.firstElementChild.firstElementChild.textContent
+    listaSelecionada = div
+
+    //para usar na funcao de excluir lista
+    blocoParaExcluir = event.target
 
     //adiciona evento ao botao de excluir lista
     document.getElementById('bt-delete-list').addEventListener('click', deleteList)
     
-    //para usar na funcao de excluir lista
-    blocoParaExcluir = event.target
-
+    //muda funcao de salvar lista pra funcao de add item
+    document.getElementById('bt-save-list').textContent = "Adicionar Item"
+    document.getElementById('bt-save-list').onclick = showPopUpAddItem
 }
 
 
@@ -93,8 +96,16 @@ function setPurchaseData() {
 }
 
 
-function subtractListValue() {
+// function subtractListValue() {
 
+    
+// }
+
+
+function deletePurchaseData(checkbox) {
+
+    checkbox.removeAttribute('checked')
+    
     const valor = Number(lastCheckedItem.firstElementChild.nextElementSibling.nextElementSibling.textContent.replace(',', '.'))
     const quantidade = Number(lastCheckedItem.lastElementChild.previousElementSibling.textContent)
 
@@ -107,17 +118,24 @@ function subtractListValue() {
 }
 
 
-function deletePurchaseData(checkbox) {
-
-    checkbox.removeAttribute('checked')
-    subtractListValue()
-}
-
-
 function deleteItem(event) {
     event.target.parentElement.style.display = 'none'
-    subtractListValue()
+    liElement = event.target.parentElement
+
+    const valor = Number(liElement.firstElementChild.nextElementSibling.nextElementSibling.textContent.replace(',', '.'))
+    const quantidade = Number(liElement.lastElementChild.previousElementSibling.textContent)
+
+    valorListaSelecionada.textContent = String(Number(valorListaSelecionada.textContent.replace(',', '.')) - valor * quantidade).replace(',', '.')
+
+    liElement.firstElementChild.nextElementSibling.nextElementSibling.textContent = ''
+    liElement.lastElementChild.previousElementSibling.textContent = ''
+
+    localStorage.setItem(nomeListaSelecionada, document.querySelector('.div-list').innerHTML)
 }
+
+
+
+
 
 function deleteList(event) {
 
@@ -133,5 +151,28 @@ function deleteList(event) {
     localStorage.removeItem(nomeListaSelecionada)
 }
 
+function showPopUpAddItem(){
+    document.querySelector('.pop-up-container.item').style.display = 'block'
+}
 
+function setNewItem(){
+    const nomeItem = document.querySelector('.pop-up-container.item input').value
+    
+    const novoItem = 
+        `<li>
+        <input type="checkbox" class="list-checkbox" onclick="check(event)">
+        <span class="span-item">${nomeItem}</span>
+        <span class="span-valor"></span>
+        <span class="span-quantidade"></span>
+        <button class="delete-item" onclick="deleteItem(event)">Excluir</button>
+        </li>`
+
+    listaSelecionada.lastElementChild.innerHTML += novoItem 
+
+
+    document.querySelector('.pop-up-container.item').style.display = 'none'
+    document.querySelector('.pop-up-container.item input').value = ''
+
+    localStorage.setItem(nomeListaSelecionada, document.querySelector('.div-list').innerHTML)
+}
 
