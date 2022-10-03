@@ -5,29 +5,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/index.css" type="text/css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@200;300;400;600;700;800;900&display=swap" rel="stylesheet">
     <title>Criar nova lista / index</title>
 </head>
 
 <body>
-
-    <div class="pop-up-container checked">
-        <div class="pop-up">
-            <span for="">Insira os dados da compra</span>
-            <label for="">Valor do item
-                <input type="text">
-            </label>
-            <label for=""> Quantidade comprada
-                <input type="number">
-            </label>
-            <button>Ok</button>
-        </div>
-    </div>
-
     <div class="pop-up-container list-name">
         <div class="pop-up">
             <span for="">Dê um nome a sua lista</span>
             <input type="text" placeholder="Nome da lista">
-            <button>Ok</button>
+            <button disabled>Nomear lista</button>
         </div>
     </div>
 
@@ -49,7 +38,7 @@
 
         <div class="input-container">
             <input type="text" id="input-novo-item" placeholder="Nome do item">
-            <button id="bt-create-item">Adicionar item</button>
+            <button id="bt-create-item" disabled>Adicionar item</button>
         </div>
 
         <div class="div-list">
@@ -59,21 +48,20 @@
                     <span class="span-gastos hide">00,00</span>
                 </div>
                 <div class="div-buttons">
-                    <button id="bt-delete-list">exlcuir lista</button>
-                    <button id="bt-save-list">salvar</button>
+                    <button id="bt-delete-list" title="Excluir lista">exlcuir lista</button>
+                    <button id="bt-save-list" title="Salvar lista">salvar</button>
                 </div>
             </div>
             <ul>
-                <li>
-                    <input type="checkbox" class="list-checkbox " style="visibility: hidden;">
-                    <span class="span-item">Nome do item</span>
-                    <span class="span-valor hide">valor</span>
-                    <span class="span-quantidade hide">Quantidade</span>
+                <li class="hide">
+                    <input type="checkbox" class="list-checkbox" style="visibility: hidden;">
+                    <span class="span-item" >Nome do item</span>
+                    <span class="span-valor">valor</span>
+                    <span class="span-quantidade">Quantidade</span>
                     <button class="delete-item" style="visibility: hidden;">Excluir</button>
                 </li>
             </ul>
         </div>
-
     </main>
 
     <script src="javascript/index.js"></script>

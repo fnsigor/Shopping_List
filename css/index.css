@@ -6,25 +6,29 @@
     box-sizing: border-box;
     list-style: none;
     text-decoration: none;
+
+    font-family: 'Nunito Sans', sans-serif;
+    transition: .3s;
 }
 
 :root {
     font-size: 62.5%;
 
-    --body-bg-color: #5F4BB6;
-    --title-color: #000;
-    --sub-title-color: #000;
-    --text-color: #FFF;
-    --header-bg-color: #FFF;
-    --nav-bg-color: #FFBF00;
-    --div-list-bg-color: #222222;
-    --red1: #E71D36;
-    --red2: #DB2B39;
-    --green1: #0CCE6B;
+    --vermelho-fiap: #ED145B;
+    --cinza-fiap: #202427;
+    --texto-fiap: #91A3AD;
+    --amarelo-forte: #F4FF52;
+    --verde-forte: #53FF45;
+    --gradiente-fiap: linear-gradient(135deg,#1a1d21,#24292c);
+    --verde-apagado: #55ff4523;
+    --vermelho-apagado: #ED145B23;
 }
 
 body {
-    background-color: var(--body-bg-color);
+   min-height: 100vh;
+  
+
+   background: var(--gradiente-fiap) no-repeat center;
 }
 
 .pop-up-container {
@@ -37,12 +41,12 @@ body {
 
     overflow: hidden;
 
-    background-color: rgba(0, 0, 0, 0.384);
+    background-color: rgba(0, 0, 0, 0.404);
 }
 
 .pop-up {
-    background-color: var(--nav-bg-color);
-
+    background-color: #ED145B;
+    
     width: 30rem;
     padding: 1rem 1rem;
 
@@ -51,7 +55,7 @@ body {
     margin: 50vh auto;
     transform: translateY(-50%);
 
-    box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
+    box-shadow: 0 0 20px #ED145B;
 }
 
 .pop-up * {
@@ -72,37 +76,44 @@ body {
 
     padding: .4rem;
     margin-bottom: 1.5rem;
-
-    background-color: var(--div-list-bg-color);
-
+  
     border: none;
     border-radius: .5rem;
-
-    color: var(--text-color);
 }
 
 
 .pop-up button {
     font-size: 1.6rem;
-    font-weight: 500;
+    font-weight: 600;
 
     padding: .4rem 1rem;
 
     border: none;
     border-radius: .5rem;
 
-    transition: .3s;
+    background-color: var(--verde-forte);
+
+
 }
 
-.pop-up button:hover {
-    padding-inline: 1.3rem;
 
-    font-weight: 600;
-
+#bt-delete-list:hover, 
+#bt-save-list:hover,
+.input-container button:hover, 
+input[type="checkbox"]:hover, 
+.delete-item:hover,
+.pop-up button:hover{
     cursor: pointer;
-
-    background-color: var(--green1);
 }
+
+
+.input-container button[disabled], .pop-up-container.list-name button[disabled]{
+    background-color: var(--verde-apagado);
+    box-shadow: none;
+}
+
+
+
 
 
 
@@ -111,15 +122,21 @@ nav {
     display: flex;
     justify-content: space-between;
 
-    padding: 1rem 1.2rem;
+    padding: 2rem;
     margin-bottom: 6rem;
 
-    background-color: var(--nav-bg-color);
+    border-bottom: 1px solid #535353;
 }
 
 #logoText {
-    font-size: 3rem;
+    font-size: 3.5rem;
+    font-weight: 800;
 }
+
+#logoText:hover{
+    text-shadow: 0 0 15px #ED145B;
+}
+
 
 nav ul {
     display: flex;
@@ -129,7 +146,13 @@ nav ul {
 
 nav a {
     font-size: 1.8rem;
-    color: #000;
+    font-weight: 600;
+    color: #ED145B;
+}
+
+nav a:hover{
+    text-shadow: 0 0 10px #ED145B;
+    
 }
 
 
@@ -140,15 +163,19 @@ header {
     margin-bottom: 4rem;
 
     text-align: center;
+    color: #ED145B;
 }
 
 h1 {
     font-size: 5.5rem;
-    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.384);
+    text-shadow: 0px 0px 8px #ED145B;
+    font-weight: 900;
 }
 
 header p {
     font-size: 2.4rem;
+    font-weight: 600;
+    text-shadow: 0px 0px 4px #ED145B;
 }
 
 
@@ -164,10 +191,11 @@ header p {
     flex-direction: column;
     align-items: center;
 
-    gap: 1rem;
+    gap: 2rem;
 
     margin-bottom: 2rem;
 }
+
 
 .input-container input {
     font-size: 2rem;
@@ -179,9 +207,15 @@ header p {
 
     border: none;
 
+    background-color: transparent;
+    color: var(--texto-fiap);
+    box-shadow: 0 0 5px #ED145B;
 }
 
-.input-container input:focus {}
+.input-container input:focus{
+    background-color: #ed145c07;
+}
+
 
 .input-container button {
     border-radius: .5rem;
@@ -189,17 +223,21 @@ header p {
 
     padding: .6rem .8rem;
 
-    transition: .2s;
 
     font-size: 1.8rem;
+    font-weight: 600;
+    color: black;
 
     width: fit-content;
+
+   
+
+    background-color: var(--verde-forte);
+    box-shadow: 0 0 15px var(--verde-forte);
 }
 
-.input-container button:hover {
-    cursor: pointer;
-    background-color: var(--green1);
-}
+
+
 
 
 
@@ -213,11 +251,12 @@ header p {
 
     border-radius: .5rem;
 
-    background-color: var(--div-list-bg-color);
+    background-color: #151819;
 
     padding-inline: 1rem;
     padding-bottom: .4rem;
 }
+
 
 .div-header {
     display: flex;
@@ -227,26 +266,29 @@ header p {
     padding-block: 1rem;
 }
 
+
 .div-header .texts{
     flex-grow: 1;
 }
 
+
 .div-header .texts h5{
     text-align: start;
-
     font-size: 2.6rem;
-
-    color: var(--nav-bg-color);
-    margin-bottom: 1rem;
+    color: var(--texto-fiap);
 }
+
 
 .div-header .texts span{
     font-size: 2rem;
-    color: var(--nav-bg-color);
+    color: var(--texto-fiap);
 }
+
 
 .div-header .texts span::before{
     content: 'Total gasto: R$ ';
+    color: var(--texto-fiap);
+    margin-top: 1rem;
 }
 
 
@@ -258,6 +300,7 @@ header p {
     justify-content: space-between;
 }
 
+
 .div-buttons button {
     font-size: 1.6rem;
     font-weight: 600;
@@ -266,16 +309,35 @@ header p {
 
     border-radius: .5rem;
     border: none;
-
-    transition: .3s;
 }
 
 
+#bt-delete-list{
+    background-color: var(--vermelho-apagado);
+}
+
+
+#bt-delete-list:hover{
+    box-shadow: 0 0 10px var(--vermelho-fiap);
+    background-color: var(--vermelho-fiap);
+}
+
+
+#bt-save-list{
+   background-color: var(--verde-apagado);
+}
+
+
+#bt-save-list:hover{
+    
+    box-shadow: 0 0 10px var(--verde-forte);
+    background-color: var(--verde-forte);
+}
 
 
 .div-list li:nth-of-type(1) {
-    background-color: #535353;
-    color: #fff;
+    color: var(--texto-fiap);
+    border-bottom: 1px solid #535353;
 }
 
 .div-list li {
@@ -288,9 +350,7 @@ header p {
     align-items: center;
     justify-content: space-between;
 
-    color: #000;
-
-    background-color: #FFF;
+    color: var(--texto-fiap);
 }
 
 .span-item {
@@ -304,24 +364,18 @@ header p {
     font-size: 2rem;
 }
 
+
 input[type="checkbox"] {
     display: block;
-
 
     width: 2.4rem;
     height: 2.4rem;
 }
 
-
-input[type="checkbox"]:hover {
-    cursor: pointer;
-}
-
 .delete-item {
-    background-color: var(--red1);
 
     font-size: 1.5rem;
-    font-weight: 500;
+    font-weight: 600;
 
     height: 2.4rem;
     padding-inline: .6rem;
@@ -329,17 +383,13 @@ input[type="checkbox"]:hover {
 
     border-radius: .5rem;
     border: none;
-
-    transition: .3s;
-
+    
+    background-color: var(--vermelho-fiap);
 }
 
+
 .delete-item:hover {
-    cursor: pointer;
-
-    padding-inline: 1.3rem;
-
-    letter-spacing: 1px;
+    box-shadow: 0 0 15px var(--vermelho-fiap);
 }
 
 .hide{
