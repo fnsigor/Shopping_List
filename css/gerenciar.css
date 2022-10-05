@@ -1,0 +1,55 @@
+.pop-up-container {
+    z-index: 2;
+}
+
+.pop-up-container.lista{
+    z-index: 1;
+}
+
+
+section{
+    padding-inline: 5rem;
+}
+
+
+.blocos{
+    font-size: 2rem;
+    font-weight: 500;
+
+    border-radius: .5rem;
+
+    background-color: var(--cinza-fiap);
+    color: var(--vermelho-fiap);
+    text-shadow: 0 0 5px #ED145B;
+
+    width: max-content;
+    padding: 1rem;
+
+    box-shadow: #ED145B 0px 0px 10px;
+
+    transition: .3s;
+}
+
+.blocos:hover{
+    cursor: pointer;
+
+    background-color: #ED145B;
+    color: #fff;
+
+}
+
+.div-list{
+    align-self: center;
+    max-width: 90rem;
+    width: 100%;
+    height: max-content;
+    z-index: 1;
+}
+
+.div-header h5{
+    margin-bottom: 2rem;
+}
+
+.div-buttons {
+  width: 30% !important;
+}

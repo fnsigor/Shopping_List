@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/page2.css">
+    <link rel="stylesheet" href="css/gerenciar.css">
+    <link rel="stylesheet" href="css/index.css" type="text/css">
     <title>Gerenciar listas</title>
 </head>
 <body>
@@ -12,10 +13,23 @@
         <div class="pop-up">
             <span for="">Insira os dados da compra</span>
             <label for="">Valor do item
-                <input type="text">
+                <input type="text" class="input-valor">
             </label>
             <label for=""> Quantidade comprada
-                <input type="number">
+                <input type="number"  class="input-quantidade">
+            </label>
+            <button>Ok</button>
+        </div>
+    </div>
+
+    <div class="pop-up-container edit">
+        <div class="pop-up">
+            <span for="">Insira os novos dados da compra</span>
+            <label for="">Valor do item
+                <input type="text"  class="input-valor">
+            </label>
+            <label for=""> Quantidade comprada
+                <input type="number" class="input-quantidade">
             </label>
             <button>Ok</button>
         </div>
@@ -40,7 +54,7 @@
 
         <ul>
             <li><a href="index.html">Criar lista</a></li>
-            <li><a href="page2.html">Gerenciar listas criadas</a></li>
+            <li><a href="gerenciar.html">Gerenciar listas criadas</a></li>
         </ul>
     </nav>
 
@@ -56,10 +70,6 @@
 
     </main>
 
-
-
-
-
-    <script src="javascript/page2.js"></script>
+    <script src="javascript/gerenciar.js"></script>
 </body>
 </html>

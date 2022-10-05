@@ -210,10 +210,11 @@ header p {
     background-color: transparent;
     color: var(--texto-fiap);
     box-shadow: 0 0 5px #ED145B;
+    transition: 0s;
 }
 
 .input-container input:focus{
-    background-color: #ed145c07;
+    background-color: #ed145c17;
 }
 
 
@@ -288,7 +289,7 @@ header p {
 .div-header .texts span::before{
     content: 'Total gasto: R$ ';
     color: var(--texto-fiap);
-    margin-top: 1rem;
+    margin-top: 1.5rem;
 }
 
 
@@ -372,7 +373,7 @@ input[type="checkbox"] {
     height: 2.4rem;
 }
 
-.delete-item {
+.delete-item, .edit-item{
 
     font-size: 1.5rem;
     font-weight: 600;
@@ -383,10 +384,27 @@ input[type="checkbox"] {
 
     border-radius: .5rem;
     border: none;
-    
-    background-color: var(--vermelho-fiap);
 }
 
+.edit-item[disabled='']{
+    background-color: var(--verde-apagado);
+}
+
+.edit-item[disabled='']:hover{
+    box-shadow: none
+}
+
+.edit-item{
+    background-color: var(--verde-forte);
+}
+
+.edit-item:hover {
+    box-shadow: 0 0 15px var(--verde-forte);
+}
+
+.delete-item{
+    background-color: var(--vermelho-fiap);
+}
 
 .delete-item:hover {
     box-shadow: 0 0 15px var(--vermelho-fiap);

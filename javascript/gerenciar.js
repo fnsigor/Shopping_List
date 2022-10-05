@@ -5,9 +5,11 @@ let nomeListaSelecionada
 let blocoParaExcluir
 let listasCriadas = []
 let listaSelecionada
+let itemPraEditar
 
 document.querySelector('.pop-up-container.checked button').addEventListener('click', setPurchaseData)
 document.querySelector('.pop-up-container.item button').addEventListener('click', setNewItem)
+document.querySelector('.pop-up-container.edit button').addEventListener('click', changeItemValues)
 
 
 
@@ -39,7 +41,7 @@ function showList(event) {
 
     document.querySelector('.pop-up-container.lista').append(div)
 
-    document.querySelector('.pop-up-container.lista').style.display = 'block'
+    document.querySelector('.pop-up-container.lista').style.display = 'flex'
 
     //mostra os elementos escondidos que estao na lista
     document.querySelectorAll('.hide').forEach(element => element.classList.remove('hide'))
@@ -68,9 +70,11 @@ function check(event) {
     if (event.target.getAttribute('checked') === null) {
         document.querySelector('.pop-up-container.checked').style.display = 'initial'
         event.target.setAttribute('checked', '')
+        event.target.parentElement.lastElementChild.previousElementSibling.removeAttribute('disabled')
 
     } else {
         deletePurchaseData(event.target)
+        event.target.parentElement.lastElementChild.previousElementSibling.setAttribute('disabled', '')
     }
 }
 
@@ -83,7 +87,7 @@ function setPurchaseData() {
 
     //coloca os valores na li
     lastCheckedItem.firstElementChild.nextElementSibling.nextElementSibling.textContent = valor
-    lastCheckedItem.lastElementChild.previousElementSibling.textContent = quantidade
+    lastCheckedItem.lastElementChild.previousElementSibling.previousElementSibling.textContent = quantidade
 
     //faz o calculo e coloca o valor novo no html
     valorListaSelecionada.textContent = String(valor * quantidade + Number(valorListaSelecionada.textContent.replace(',', '.'))).replace('.', ',')
@@ -96,10 +100,6 @@ function setPurchaseData() {
 }
 
 
-// function subtractListValue() {
-
-    
-// }
 
 
 function deletePurchaseData(checkbox) {
@@ -107,12 +107,12 @@ function deletePurchaseData(checkbox) {
     checkbox.removeAttribute('checked')
     
     const valor = Number(lastCheckedItem.firstElementChild.nextElementSibling.nextElementSibling.textContent.replace(',', '.'))
-    const quantidade = Number(lastCheckedItem.lastElementChild.previousElementSibling.textContent)
+    const quantidade = Number(lastCheckedItem.lastElementChild.previousElementSibling.previousElementSibling.textContent)
 
     valorListaSelecionada.textContent = String(Number(valorListaSelecionada.textContent.replace(',', '.')) - valor * quantidade).replace(',', '.')
 
     lastCheckedItem.firstElementChild.nextElementSibling.nextElementSibling.textContent = ''
-    lastCheckedItem.lastElementChild.previousElementSibling.textContent = ''
+    lastCheckedItem.lastElementChild.previousElementSibling.previousElementSibling.textContent = ''
 
     localStorage.setItem(nomeListaSelecionada, document.querySelector('.div-list').innerHTML)
 }
@@ -123,7 +123,7 @@ function deleteItem(event) {
     liElement = event.target.parentElement
 
     const valor = Number(liElement.firstElementChild.nextElementSibling.nextElementSibling.textContent.replace(',', '.'))
-    const quantidade = Number(liElement.lastElementChild.previousElementSibling.textContent)
+    const quantidade = Number(liElement.lastElementChild.previousElementSibling.previousElementSibling.textContent)
 
     valorListaSelecionada.textContent = String(Number(valorListaSelecionada.textContent.replace(',', '.')) - valor * quantidade).replace(',', '.')
 
@@ -164,6 +164,7 @@ function setNewItem(){
         <span class="span-item">${nomeItem}</span>
         <span class="span-valor"></span>
         <span class="span-quantidade"></span>
+        <button class="edit-item" disabled onclick="showEditPopUp(event)">Editar</button>
         <button class="delete-item" onclick="deleteItem(event)">Excluir</button>
         </li>`
 
@@ -176,3 +177,33 @@ function setNewItem(){
     localStorage.setItem(nomeListaSelecionada, document.querySelector('.div-list').innerHTML)
 }
 
+
+function showEditPopUp(event){
+    document.querySelector('.pop-up-container.edit').style.display = 'block'
+    itemPraEditar = event.target.parentElement
+
+}
+
+function changeItemValues(){
+
+    //capturando novo valor pra somar na lista
+    const novoValor =  Number(document.querySelector('.pop-up-container.edit .input-valor').value.replace(',', '.'))
+    const novaQuantidade =  Number(document.querySelector('.pop-up-container.edit .input-quantidade').value)
+
+    //capturando valor para subtrair
+    const antigoValor = Number(itemPraEditar.firstElementChild.nextElementSibling.nextElementSibling.textContent.replace(',', '.'))
+    const antigaQuantidade = Number(itemPraEditar.firstElementChild.nextElementSibling.nextElementSibling.nextElementSibling.textContent)
+
+    //colocando novos valores na estrutura da lista
+    itemPraEditar.firstElementChild.nextElementSibling.nextElementSibling.textContent = novoValor
+    itemPraEditar.firstElementChild.nextElementSibling.nextElementSibling.nextElementSibling.textContent = novaQuantidade
+
+    //trocando os valores e salvando no localStorage
+    const valorAtual = Number(valorListaSelecionada.textContent)
+    valorListaSelecionada.textContent = (valorAtual - antigoValor * antigaQuantidade) + novoValor * novaQuantidade
+
+    //sumindo com o input
+    document.querySelector('.pop-up-container.edit').style.display = 'none'
+
+    localStorage.setItem(nomeListaSelecionada, document.querySelector('.div-list').innerHTML)
+}

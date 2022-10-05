@@ -27,6 +27,7 @@ function createListItem() {
         <span class="span-item">${nomeItem}</span>
         <span class="span-valor"></span>
         <span class="span-quantidade"></span>
+        <button class="edit-item hide" disabled onclick="showEditPopUp(event)">Editar</button>
         <button class="delete-item" onclick="deleteItem(event)">Excluir</button>
         </li>`
 
@@ -77,7 +78,7 @@ function saveList() {
 
     alert(`Sua lista "${listName}" foi salva com sucesso!`)
 
-    window.location.href = "http://127.0.0.1:5501/Fundamentar/99-Desafios/lista-de-compras/page2.html"
+    window.location.href = "http://127.0.0.1:5501/Fundamentar/99-Desafios/lista-de-compras/gerenciar.html"
 }
 
 
