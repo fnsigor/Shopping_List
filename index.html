@@ -7,7 +7,8 @@
     <link rel="stylesheet" href="css/index.css" type="text/css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@200;300;400;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@200;300;400;600;700;800;900&display=swap"
+        rel="stylesheet">
     <title>Criar nova lista / index</title>
 </head>
 
@@ -17,6 +18,32 @@
             <span for="">Dê um nome a sua lista</span>
             <input type="text" placeholder="Nome da lista">
             <button disabled>Nomear lista</button>
+        </div>
+    </div>
+
+    <div class="pop-up-container checked">
+        <div class="pop-up">
+            <span for="">Insira os dados da compra</span>
+            <label for="">Valor do item
+                <input type="text" class="input-valor">
+            </label>
+            <label for=""> Quantidade comprada
+                <input type="number" class="input-quantidade">
+            </label>
+            <button>Ok</button>
+        </div>
+    </div>
+
+    <div class="pop-up-container edit">
+        <div class="pop-up">
+            <span for="">Insira os novos dados da compra</span>
+            <label for="">Valor do item
+                <input type="text" class="input-valor">
+            </label>
+            <label for=""> Quantidade comprada
+                <input type="number" class="input-quantidade">
+            </label>
+            <button>Ok</button>
         </div>
     </div>
 
@@ -44,7 +71,7 @@
         <div class="div-list">
             <div class="div-header">
                 <div class="texts">
-                    <h5 class="list-name" >Nova lista</h5>
+                    <h5 class="list-name">Nova lista</h5>
                     <span class="span-gastos hide">00,00</span>
                 </div>
                 <div class="div-buttons">
@@ -55,7 +82,7 @@
             <ul>
                 <li class="hide">
                     <input type="checkbox" class="list-checkbox" style="visibility: hidden;">
-                    <span class="span-item" >Nome do item</span>
+                    <span class="span-item">Nome do item</span>
                     <span class="span-valor">valor</span>
                     <span class="span-quantidade">Quantidade</span>
                     <button class="edit-item" style="visibility: hidden;">Editar</button>
@@ -65,7 +92,8 @@
         </div>
     </main>
 
-    <script defer src="javascript/index.js"></script>
+    <script type="module" src="javascript/index.js"></script>
+    <script  type="module" src="javascript/geral.js"></script>
 </body>
 
 </html>
