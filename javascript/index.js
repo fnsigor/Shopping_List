@@ -52,7 +52,7 @@ function setListName() { //ao setar um nome na lista, salva no localStorage
 function redirect() {
     alert(`Sua lista "${listName}" foi salva com sucesso!`)
 
-    window.location.href = "http://127.0.0.1:5501/Fundamentar/99-Desafios/lista-de-compras/gerenciar.html"
+    window.location.href = "https://fnsigor.github.io/Shopping_List/gerenciar.html"
 }
 
 function checkLengthInputIndex(event) {
