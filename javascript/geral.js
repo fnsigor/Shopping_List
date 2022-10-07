@@ -40,6 +40,7 @@ if (estaNaPaginaPrincipal) {
     })
     document.querySelector('.pop-up-container.item button').addEventListener('click', setNewItem) //pop up de nome do item
     
+    //atts de ultima hora, vou arrumar essa parte 😅 
     document.querySelector('.pop-up-container.item input').addEventListener('keyup', event => {
         if (event.target.value.length > 2) {
             document.querySelector('.pop-up-container.item button').removeAttribute('disabled')
@@ -47,7 +48,11 @@ if (estaNaPaginaPrincipal) {
             document.querySelector('.pop-up-container.item button').setAttribute('disabled', '')
         }
     })
-    //att de ultima hora, vou arrumar essa parte 😅 
+
+    document.getElementById('bt-add').addEventListener('click', event =>{
+        document.querySelector('.pop-up-container.item input').value = ''
+        event.target.setAttribute('disabled', '')
+    })
 }
 
 
