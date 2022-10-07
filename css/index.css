@@ -19,16 +19,16 @@
     --texto-fiap: #91A3AD;
     --amarelo-forte: #F4FF52;
     --verde-forte: #53FF45;
-    --gradiente-fiap: linear-gradient(135deg,#1a1d21,#24292c);
+    --gradiente-fiap: linear-gradient(135deg, #1a1d21, #24292c);
     --verde-apagado: #55ff4523;
     --vermelho-apagado: #ED145B23;
 }
 
 body {
-   min-height: 100vh;
-  
+    min-height: 100vh;
 
-   background: var(--gradiente-fiap) no-repeat center;
+
+    background: var(--gradiente-fiap) no-repeat center;
 }
 
 .pop-up-container {
@@ -46,7 +46,7 @@ body {
 
 .pop-up {
     background-color: #ED145B;
-    
+
     width: 30rem;
     padding: 1rem 1rem;
 
@@ -65,7 +65,7 @@ body {
 }
 
 .pop-up span {
-    margin-bottom: 1rem;
+    margin-bottom: 2rem;
 
     font-size: 2rem;
     text-align: center;
@@ -75,10 +75,11 @@ body {
     font-size: 2rem;
 
     padding: .4rem;
-    margin-bottom: 1.5rem;
-  
+    margin-block: .5rem 2rem;
+
     border: none;
     border-radius: .5rem;
+    width: 100%;
 }
 
 
@@ -92,22 +93,27 @@ body {
     border-radius: .5rem;
 
     background-color: var(--verde-forte);
+}
 
-
+.pop-up label{
+    font-size: 1.6rem;
+    font-weight: 500;
+    width: 90%;
 }
 
 
-#bt-delete-list:hover, 
+#bt-delete-list:hover,
 #bt-save-list:hover,
-.input-container button:hover, 
-input[type="checkbox"]:hover, 
+.input-container button:hover,
+input[type="checkbox"]:hover,
 .delete-item:hover,
-.pop-up button:hover{
+.pop-up button:hover {
     cursor: pointer;
 }
 
 
-.input-container button[disabled], .pop-up-container.list-name button[disabled]{
+.input-container button[disabled],
+.pop-up-container.list-name button[disabled] {
     background-color: var(--verde-apagado);
     box-shadow: none;
 }
@@ -133,7 +139,7 @@ nav {
     font-weight: 800;
 }
 
-#logoText:hover{
+#logoText:hover {
     text-shadow: 0 0 15px #ED145B;
 }
 
@@ -150,9 +156,9 @@ nav a {
     color: #ED145B;
 }
 
-nav a:hover{
+nav a:hover {
     text-shadow: 0 0 10px #ED145B;
-    
+
 }
 
 
@@ -170,12 +176,15 @@ h1 {
     font-size: 5.5rem;
     text-shadow: 0px 0px 8px #ED145B;
     font-weight: 900;
+    padding-inline: 2rem;
+    margin-bottom: 2rem;
 }
 
 header p {
     font-size: 2.4rem;
     font-weight: 600;
     text-shadow: 0px 0px 4px #ED145B;
+     padding-inline: 2rem;
 }
 
 
@@ -213,7 +222,7 @@ header p {
     transition: 0s;
 }
 
-.input-container input:focus{
+.input-container input:focus {
     background-color: #ed145c17;
 }
 
@@ -231,7 +240,7 @@ header p {
 
     width: fit-content;
 
-   
+
 
     background-color: var(--verde-forte);
     box-shadow: 0 0 15px var(--verde-forte);
@@ -263,30 +272,30 @@ header p {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    
+
     padding-block: 1rem;
 }
 
 
-.div-header .texts{
+.div-header .texts {
     flex-grow: 1;
 }
 
 
-.div-header .texts h5{
+.div-header .texts h5 {
     text-align: start;
     font-size: 2.6rem;
     color: var(--texto-fiap);
 }
 
 
-.div-header .texts span{
+.div-header .texts span {
     font-size: 2rem;
     color: var(--texto-fiap);
 }
 
 
-.div-header .texts span::before{
+.div-header .texts span::before {
     content: 'Total gasto: R$ ';
     color: var(--texto-fiap);
     margin-top: 1.5rem;
@@ -294,10 +303,10 @@ header p {
 
 
 .div-buttons {
-    width: 25%;
-
+    width: max-content;
+    
     display: flex;
-
+    gap: 4rem;
     justify-content: space-between;
 }
 
@@ -313,24 +322,24 @@ header p {
 }
 
 
-#bt-delete-list{
+#bt-delete-list {
     background-color: var(--vermelho-apagado);
 }
 
 
-#bt-delete-list:hover{
+#bt-delete-list:hover {
     box-shadow: 0 0 10px var(--vermelho-fiap);
     background-color: var(--vermelho-fiap);
 }
 
 
-#bt-save-list{
-   background-color: var(--verde-apagado);
+#bt-save-list {
+    background-color: var(--verde-apagado);
 }
 
 
-#bt-save-list:hover{
-    
+#bt-save-list:hover {
+
     box-shadow: 0 0 10px var(--verde-forte);
     background-color: var(--verde-forte);
 }
@@ -357,6 +366,7 @@ header p {
 .span-item {
     font-size: 2rem;
     width: 40%;
+   word-break: break-all;
 }
 
 .span-valor,
@@ -373,7 +383,8 @@ input[type="checkbox"] {
     height: 2.4rem;
 }
 
-.delete-item, .edit-item{
+.delete-item,
+.edit-item {
 
     font-size: 1.5rem;
     font-weight: 600;
@@ -386,23 +397,25 @@ input[type="checkbox"] {
     border: none;
 }
 
-.edit-item[disabled='']{
+.edit-item[disabled=''] {
     background-color: var(--verde-apagado);
 }
 
-.edit-item[disabled='']:hover{
+.edit-item[disabled='']:hover {
+    cursor: initial;
     box-shadow: none
 }
 
-.edit-item{
+.edit-item {
     background-color: var(--verde-forte);
 }
 
 .edit-item:hover {
     box-shadow: 0 0 15px var(--verde-forte);
+    cursor: pointer;
 }
 
-.delete-item{
+.delete-item {
     background-color: var(--vermelho-fiap);
 }
 
@@ -410,3 +423,153 @@ input[type="checkbox"] {
     box-shadow: 0 0 15px var(--vermelho-fiap);
 }
 
+
+
+
+
+/*==================================RESPONSIVE*/
+@media (max-width: 1000px) {
+
+    /*nav*/
+    nav {
+        padding: 1rem;
+        margin-bottom: 3rem;
+    }
+
+    #logoText {
+        font-size: 2rem;
+        font-weight: 800;
+    }
+
+
+    nav ul {
+        gap: 2rem;
+    }
+
+    nav a {
+        font-size: 1.6rem;
+    }
+
+
+
+    /*header*/
+    header {
+        margin-bottom: 3rem;
+    }
+
+    h1 {
+        font-size: 3rem;
+        font-weight: 800;
+    }
+
+    header p {
+        font-size: 2rem;
+    }
+
+
+
+    /*input container*/
+    .input-container {
+        gap: 2rem;
+    }
+
+
+    .input-container input {
+        font-size: 1.6rem;
+
+        width: 80vw;
+        max-width: 40rem;
+    }
+
+    .input-container button {
+        padding: .3rem .5rem;
+
+        font-size: 1.6rem;
+    }
+
+
+
+    /*list*/
+    .div-list {
+        width: 90rem;
+        max-width: 80vw;
+    }
+
+
+    .div-header {
+        padding-block: 1rem;
+    }
+
+
+    .div-header .texts {
+        flex-grow: 1;
+    }
+
+
+    .div-header .texts h5 {
+        font-size: 1.8rem;
+    }
+
+
+    .div-header .texts span {
+        font-size: 1.8rem;
+    }
+
+
+    .div-header .texts span::before {
+        margin-top: 1.5rem;
+    }
+
+
+    .div-buttons {
+        width: max-content;
+        gap: 1rem;
+    }
+
+
+    .div-buttons button {
+        font-size: 1.4rem;
+        padding: .4rem .6rem;
+    }
+
+    .div-list li {
+        margin-bottom: 1rem;
+        padding: .4rem .6rem;
+    }
+
+    .span-item {
+        font-size: 1.6rem;
+        width: 35%;
+    }
+
+    .span-valor,
+    .span-quantidade {
+        width: 10%;
+        font-size: 1.6rem;
+    }
+
+
+    input[type="checkbox"] {
+        display: block;
+
+        width: 1.8rem;
+        height: 1.8rem;
+    }
+
+    .delete-item,
+    .edit-item {
+
+        font-size: 1.4rem;
+        font-weight: 600;
+
+        height: 2.4rem;
+        padding-inline: .6rem;
+        padding-block: .3rem;
+    }
+
+}
+
+
+@media (max-width: 550px) {
+
+}

@@ -16,6 +16,11 @@ document.getElementById('bt-delete-list').addEventListener('click', deleteList)
 document.getElementById('bt-delete-list').addEventListener('click', ()=> location.reload())
 
 
+document.getElementById('bt-create-item').addEventListener('click', event => {
+    document.getElementById('input-novo-item').value = ''
+    event.target.setAttribute('disabled','')
+})
+
 //---------------------------------------------app-----------------------=------------------------//
 
 

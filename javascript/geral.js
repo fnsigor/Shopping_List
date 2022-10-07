@@ -19,10 +19,6 @@ import {
 document.querySelector('.pop-up-container.checked button').addEventListener('click', setPurchaseData)//pop up pra inserir dados da compra
 document.querySelector('.pop-up-container.edit button').addEventListener('click', changeItemValues)//pop up pra editar valor e quantidade
 
-if (estaNaPaginaDeGerenciamento) {//o geral.js no index.html chama o gerenciar.js, por isso essa adicao de evento da erro
-    document.querySelector('.pop-up-container.item button').addEventListener('click', setNewItem) //pop up de nome do item
-
-}
 
 //exportacoes
 export {
@@ -38,6 +34,20 @@ if (estaNaPaginaPrincipal) {
     valorListaSelecionada = document.querySelector('span.span-gastos')
     listaSelecionada = document.querySelector('.div-list')
     document.getElementById('bt-create-item').addEventListener('click', setNewItem)
+} else{
+    document.getElementById('bt-fechar').addEventListener('click', () => {//o geral.js no index.html chama o gerenciar.js, por isso essa adicao de evento da erro
+        document.querySelector('.pop-up-container.lista').style.display = 'none'
+    })
+    document.querySelector('.pop-up-container.item button').addEventListener('click', setNewItem) //pop up de nome do item
+    
+    document.querySelector('.pop-up-container.item input').addEventListener('keyup', event => {
+        if (event.target.value.length > 2) {
+            document.querySelector('.pop-up-container.item button').removeAttribute('disabled')
+        } else {
+            document.querySelector('.pop-up-container.item button').setAttribute('disabled', '')
+        }
+    })
+    //att de ultima hora, vou arrumar essa parte 😅 
 }
 
 
@@ -61,8 +71,8 @@ function check(event) { //verifica se o checkbox está marcado ou não
 function setPurchaseData() {
 
     //pega os valores como number
-    const valor = Number(document.querySelector('.pop-up-container.checked input[type="text"]').value.replace(',', '.'))
-    const quantidade = Number(document.querySelector('.pop-up-container.checked input[type="number"]').value)
+    const valor = Number(document.querySelector('.pop-up-container.checked input.input-valor').value.replace(',', '.'))
+    const quantidade = Number(document.querySelector('.pop-up-container.checked input.input-quantidade').value)
 
     //coloca os valores na li
     lastCheckedItem.firstElementChild.nextElementSibling.nextElementSibling.textContent = valor
@@ -184,6 +194,7 @@ function deleteList(event) {
     if (estaNaPaginaDeGerenciamento) {
         document.querySelector('.pop-up-container.lista').style.display = 'none' //sumir o pop up da lista em si
         blocoParaExcluir.style.display = 'none' //excluir a div com nome da lista
+       
     }
 
 

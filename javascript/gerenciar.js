@@ -36,10 +36,10 @@ function showPopUpAddItem() {
 
 //cria a lista a partir dos dados do localStorage e exibe elas
 function showList(event) {
-    try{
-        document.querySelector('.pop-up-container.lista').removeChild(document.querySelector('.pop-up-container.lista').firstElementChild)
+    try{ //colocar na funcao delete list
+        document.querySelector('.pop-up-container.lista').removeChild(document.querySelector('.pop-up-container.lista div.div-list'));
     } catch(e){}
-    
+
     const nomeLista = event.target.textContent
     const listaLocal = localStorage.getItem(nomeLista)
 
