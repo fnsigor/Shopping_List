@@ -5,8 +5,8 @@ let nomeListaSelecionada
 let listaSelecionada
 let itemPraEditar
 let totalItemLista = 0
-let estaNaPaginaPrincipal = location.href === 'http://127.0.0.1:5500/index.html'
-let estaNaPaginaDeGerenciamento = location.href === 'http://127.0.0.1:5500/gerenciar.html'
+let estaNaPaginaPrincipal = location.href === 'https://fnsigor.github.io/Shopping_List/' || location.href === 'https://fnsigor.github.io/Shopping_List' || location.href === 'https://fnsigor.github.io/Shopping_List/index.html'
+let estaNaPaginaDeGerenciamento = location.href === 'https://fnsigor.github.io/Shopping_List/gerenciar.html' || location.href === 'https://fnsigor.github.io/Shopping_List/gerenciar.html/'
 let listasCriadas
 
 import {
