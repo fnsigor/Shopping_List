@@ -618,11 +618,7 @@ input[type="checkbox"] {
         font-size: 1.4rem;
         padding: .4rem .5rem;
     }
-
-    .div-list li {
-        border: 1px solid red;
-    }
-
+    
     .span-item {
         font-size: 1.4rem;
         width: 20%;
