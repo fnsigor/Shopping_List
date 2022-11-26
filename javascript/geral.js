@@ -6,8 +6,6 @@ let listaSelecionada
 let itemPraEditar
 let totalItemLista = 0
 let estaNaPaginaPrincipal = location.href === 'https://fnsigor.github.io/Shopping_List/' || location.href === 'https://fnsigor.github.io/Shopping_List' || location.href === 'https://fnsigor.github.io/Shopping_List/index.html'
-let estaNaPaginaDeGerenciamento = location.href === 'https://fnsigor.github.io/Shopping_List/gerenciar.html' || location.href === 'https://fnsigor.github.io/Shopping_List/gerenciar.html/'
-let listasCriadas
 
 import {
     blocoParaExcluir
@@ -196,7 +194,7 @@ function setNewItem() {
 
 function deleteList(event) {
 
-    if (estaNaPaginaDeGerenciamento) {
+    if (!estaNaPaginaPrincipal) {
         document.querySelector('.pop-up-container.lista').style.display = 'none' //sumir o pop up da lista em si
         blocoParaExcluir.style.display = 'none' //excluir a div com nome da lista
        
