@@ -6,6 +6,7 @@ let listaSelecionada
 let itemPraEditar
 let totalItemLista = 0
 let estaNaPaginaPrincipal = location.href === 'https://fnsigor.github.io/Shopping_List/' || location.href === 'https://fnsigor.github.io/Shopping_List' || location.href === 'https://fnsigor.github.io/Shopping_List/index.html'
+let listasCriadas
 
 import {
     blocoParaExcluir
