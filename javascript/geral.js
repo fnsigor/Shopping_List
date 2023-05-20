@@ -5,23 +5,24 @@ let nomeListaSelecionada
 let listaSelecionada
 let itemPraEditar
 let totalItemLista = 0
-let estaNaPaginaPrincipal = location.href === 'https://fnsigor.github.io/Shopping_List/' || location.href === 'https://fnsigor.github.io/Shopping_List' || location.href === 'https://fnsigor.github.io/Shopping_List/index.html'
+let estaNaPaginaPrincipal = !(location.href.includes('gerenciar'))
 let listasCriadas
 
 import {
     blocoParaExcluir
 } from './gerenciar.js'
 
-
-
 //eventos em gerenciar e index
 document.querySelector('.pop-up-container.checked button').addEventListener('click', setPurchaseData)//pop up pra inserir dados da compra
 document.querySelector('.pop-up-container.edit button').addEventListener('click', changeItemValues)//pop up pra editar valor e quantidade
 
+// let deleteListButton = document.getElementById('bt-delete-list')
+// let saveListButton = document.getElementById('bt-save-list')
 
 //exportacoes
 export {
     nomeListaSelecionada, valorListaSelecionada, listaSelecionada,
+    //  deleteListButton, saveListButton,
     mudarListaSelecionada, mudarNomeListaSelecionada, mudarHTMLValorListaSelecionada, setNewItem, check,
     deleteList, deleteItem, changeItemValues, showEditPopUp, listasCriadas, mudarListasCriadas, adicionarListaCriada
 }
@@ -30,10 +31,13 @@ export {
 //---------------------------------------------app-----------------------=------------------------//
 
 if (estaNaPaginaPrincipal) {
+    // deleteListButton.setAttribute('disabled',true)
+    // saveListButton.setAttribute('disabled',true)
     valorListaSelecionada = document.querySelector('span.span-gastos')
     listaSelecionada = document.querySelector('.div-list')
     document.getElementById('bt-create-item').addEventListener('click', setNewItem)
 } else{
+
     document.getElementById('bt-fechar').addEventListener('click', () => {//o geral.js no index.html chama o gerenciar.js, por isso essa adicao de evento da erro
         document.querySelector('.pop-up-container.lista').style.display = 'none'
     })
