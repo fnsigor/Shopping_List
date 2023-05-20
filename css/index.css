@@ -152,7 +152,7 @@ nav ul {
 
 nav a {
     font-size: 1.8rem;
-    font-weight: 600;
+    /* font-weight: 600; */
     color: #ED145B;
 }
 
@@ -256,7 +256,7 @@ header p {
 /*============= MAIN - LIST CONTAINER ==============*/
 
 .div-list {
-    max-width: 90rem;
+    width: 800px;
     margin-inline: auto;
 
     border-radius: .5rem;
@@ -324,26 +324,30 @@ header p {
 }
 
 
-#bt-delete-list {
+#bt-delete-list[disabled='true'] {
     background-color: var(--vermelho-apagado);
 }
 
-
-#bt-delete-list:hover {
-    box-shadow: 0 0 10px var(--vermelho-fiap);
+#bt-delete-list[disabled='false'] {
     background-color: var(--vermelho-fiap);
+    color: #000;
+}
+#bt-delete-list[disabled='false']:hover {
+    box-shadow: 0 0 10px var(--vermelho-fiap);
 }
 
 
-#bt-save-list {
+#bt-save-list[disabled='true'] {
     background-color: var(--verde-apagado);
 }
 
-
-#bt-save-list:hover {
-
-    box-shadow: 0 0 10px var(--verde-forte);
+#bt-save-list[disabled='false'] {
     background-color: var(--verde-forte);
+    color: #000;
+}
+
+#bt-save-list[disabled='false']:hover {
+    box-shadow: 0 0 10px var(--verde-forte);
 }
 
 
@@ -441,7 +445,7 @@ input[type="checkbox"] {
 
     #logoText {
         font-size: 2rem;
-        font-weight: 800;
+        /* font-weight: 800; */
     }
 
 
@@ -494,8 +498,8 @@ input[type="checkbox"] {
 
     /*list*/
     .div-list {
-        width: 90rem;
-        max-width: 80vw;
+        width: 85%;
+        min-width: 340px;
     }
 
 
@@ -576,29 +580,24 @@ input[type="checkbox"] {
 
 @media (max-width: 550px) {
 
-    #logoText {
-        font-size: 1.8rem;
-    }
-
-    nav li {
-        text-align: center;
-    }
-
-    nav ul {
-        gap: 1rem;
-    }
-
 
     .div-list {
         max-width: none;
-        width: 95%;
-        max-height: 50vh;
+       
+        max-height: 70vh;
         overflow-y: scroll;
         margin-bottom: 2rem;
     }
 
+    .div-header{
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        gap: 1rem;
+    }
+
     .div-header .texts{
-        width: 70%;
+        width: 100%;
     }
 
     .div-header .texts h5 {
