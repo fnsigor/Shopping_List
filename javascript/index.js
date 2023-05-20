@@ -13,18 +13,18 @@ document.getElementById('bt-save-list').addEventListener('click', redirect)
 document.getElementById('input-novo-item').addEventListener('keyup', checkLengthInputIndex)
 document.querySelector('.pop-up-container.list-name input').addEventListener('keyup', checkListNamePopUpLength)
 document.getElementById('bt-delete-list').addEventListener('click', deleteList)
-document.getElementById('bt-delete-list').addEventListener('click', ()=> location.reload())
+document.getElementById('bt-delete-list').addEventListener('click', () => location.reload())
 
 
 document.getElementById('bt-create-item').addEventListener('click', event => {
     document.getElementById('input-novo-item').value = ''
-    event.target.setAttribute('disabled','')
+    event.target.setAttribute('disabled', '')
 })
 
 //---------------------------------------------app-----------------------=------------------------//
 
-
-
+document.getElementById('bt-delete-list').setAttribute('disabled', true)
+document.getElementById('bt-save-list').setAttribute('disabled', true)
 
 function setListName() { //ao setar um nome na lista, salva no localStorage
 
@@ -46,13 +46,18 @@ function setListName() { //ao setar um nome na lista, salva no localStorage
 
     adicionarListaCriada(listName)
     localStorage.setItem('listasCriadas', listasCriadas)
+
+
+    document.getElementById('bt-delete-list').removeAttribute('disabled')
+    document.getElementById('bt-save-list').removeAttribute('disabled')
+
 }
 
 
 function redirect() {
     alert(`Sua lista "${listName}" foi salva com sucesso!`)
 
-    window.location.href = "https://fnsigor.github.io/Shopping_List/gerenciar.html"
+    window.location.href = "http://127.0.0.1:5500/gerenciar.html"
 }
 
 function checkLengthInputIndex(event) {

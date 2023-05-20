@@ -63,6 +63,9 @@ function showList(event) {
     //para usar na funcao de excluir lista
     blocoParaExcluir = event.target
 
+    document.getElementById('bt-delete-list').removeAttribute('disabled')
+    document.getElementById('bt-save-list').removeAttribute('disabled')
+
     //adiciona evento ao botao de excluir lista
     document.getElementById('bt-delete-list').addEventListener('click', deleteList)
 

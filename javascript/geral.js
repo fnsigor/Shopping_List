@@ -16,9 +16,6 @@ import {
 document.querySelector('.pop-up-container.checked button').addEventListener('click', setPurchaseData)//pop up pra inserir dados da compra
 document.querySelector('.pop-up-container.edit button').addEventListener('click', changeItemValues)//pop up pra editar valor e quantidade
 
-// let deleteListButton = document.getElementById('bt-delete-list')
-// let saveListButton = document.getElementById('bt-save-list')
-
 //exportacoes
 export {
     nomeListaSelecionada, valorListaSelecionada, listaSelecionada,

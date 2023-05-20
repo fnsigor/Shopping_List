@@ -328,11 +328,11 @@ header p {
     background-color: var(--vermelho-apagado);
 }
 
-#bt-delete-list[disabled='false'] {
+#bt-delete-list {
     background-color: var(--vermelho-fiap);
     color: #000;
 }
-#bt-delete-list[disabled='false']:hover {
+#bt-delete-list:hover {
     box-shadow: 0 0 10px var(--vermelho-fiap);
 }
 
@@ -341,12 +341,12 @@ header p {
     background-color: var(--verde-apagado);
 }
 
-#bt-save-list[disabled='false'] {
+#bt-save-list {
     background-color: var(--verde-forte);
     color: #000;
 }
 
-#bt-save-list[disabled='false']:hover {
+#bt-save-list:hover {
     box-shadow: 0 0 10px var(--verde-forte);
 }
 
